@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Textend CRM APP - SMS and MMS CRM Marketing Tool</title>
+</head>
+
+<body>
+    <noscript>
+        You need to enable JavaScript to run this app.
+    </noscript>
+    <div id="root"></div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io.connect('http://localhost:8000', { query: "CT=F" });
+        
+
+        socket.on('news', function (data) {
+            console.log(data);
+            socket.emit('mystatus', { mystatus: 'READY' });
+        });
+
+        socket.on('matched', function (data) {
+            console.log(data);
+        });
+
+    </script>
+
+</body>
+
+</html>
